@@ -1,5 +1,4 @@
 let jwt = require("jsonwebtoken")
-let secret = require("../credentials/jwtSecret");
 
 module.exports = function checkToken(req){
     token = req.headers["x-acces-token"]

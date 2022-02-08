@@ -1,1 +1,0 @@
-module.exports = "hAm0c02"

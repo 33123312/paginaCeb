@@ -3,7 +3,6 @@ require('mysql2');
 
 const passport = require('passport');
 const jwt = require("jsonwebtoken")
-const secret = require("../credentials/jwtSecret");
 const route = express.Router();
 
 route.post(
@@ -39,7 +38,7 @@ route.post(
 
 
 function generateToken(aluId){
-    return jwt.sign({ id: aluId }, secret, { expiresIn: 60*60*24});
+    return jwt.sign({ id: aluId }, process.env.JWT_SECRET, { expiresIn: 60*60*24});
 }
 
 module.exports = route;

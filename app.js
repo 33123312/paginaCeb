@@ -1,11 +1,13 @@
 const express = require("express")
 const passport = require('passport');
 const bodyParser = require('body-parser');
+require('dotenv').config()
+
 
 const app = express()
 let cors = require('cors');
-app.use(cors({origin: 'http://localhost:5000'}));
-app.use(cors({origin: 'http://147.182.129.199:80'}));
+app.use(cors({origin: process.env.WEB_URL}));
+//app.use(cors({origin: 'http://147.182.129.199:80'}));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json())
 
@@ -18,7 +20,7 @@ app.use(passport.authenticate('jwt', { session: false }),require("./routes/safeR
 
 
 
-app.listen(3005,() => console.log("puerto 3001"))
+app.listen(process.env.APP_PORT,() => console.log("puerto 3005"))
 
 
 
