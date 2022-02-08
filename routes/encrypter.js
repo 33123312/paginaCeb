@@ -1,6 +1,5 @@
 const bcrypt = require('bcryptjs');
 
-let secret = "zHaM0K0/"
 
 module.exports = {
     encrypt: (string) => {    

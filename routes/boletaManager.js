@@ -9,7 +9,10 @@ const route = express.Router();
 route.get("/getBoleta",(req,res) => {
     let id = checkToken(req)
 
-    buildResponse(id,"dodo").then(calif => res.status(200).send(calif))
+    getCurrentPeriodo()
+        .then(periodo => buildResponse(id,periodo).then(calif => res.status(200).send(calif)))
+        .catch(error => res.sendStatus(400))
+
 
     }
 )
@@ -75,6 +78,24 @@ function getCalifas(id,view,colsToGet,periodo){
             )
         })
      })
+}
+
+function getCurrentPeriodo(){
+    return new Promise((resolver,reject) => { 
+
+        connection((err, connection) => {
+            let query = "select * from currentperiodo";
+            connection.query(query, (error, results, fields) => {
+                if (error || results.length != 1)
+                    return reject
+                else
+                    return resolver(results[0].periodo)
+                
+                }
+            )
+        })
+     })
+
 }
 
 function getEvas(){
