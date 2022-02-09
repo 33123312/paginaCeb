@@ -10,7 +10,7 @@ generateAluPass(alumno){
     try {
         let decryptedPass = generatePassword();
         let password = cry.encrypt(decryptedPass) 
-
+        console.log(decryptedPass,password)
         mailer(alumno,decryptedPass)
         return [alumno.numero_control,password]
 

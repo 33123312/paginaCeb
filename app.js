@@ -14,9 +14,9 @@ app.use(express.json())
 require("./auth")
 
 app.use(require("./routes/login"))
-app.use(require("./routes/boletaManager"))
 app.use(require("./routes/aluPassGen"))
 app.use(passport.authenticate('jwt', { session: false }),require("./routes/safeRoutes"))
+app.use(require("./routes/boletaManager"))
 
 
 

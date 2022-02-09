@@ -33,7 +33,6 @@ function setAlumno(res,id){
 
     dbCon((error,connection)=>{
         let query ="SELECT * FROM cebdatabase.alumnos where numero_control = '" + id + "'"
-        console.log(query)
         connection.query(query,(error,results,fields) => {
             if(error)
                 res.sendStatus(400)

@@ -1,5 +1,4 @@
 const express = require("express")
-const checkToken = require("../credentials/tokenChecker")
 require('mysql2');
 
 let connection = require("../credentials/dbCon")
@@ -7,7 +6,7 @@ let connection = require("../credentials/dbCon")
 const route = express.Router();
 
 route.get("/getBoleta",(req,res) => {
-    let id = checkToken(req)
+    let id = req.user.id
 
     getCurrentPeriodo()
         .then(periodo => buildResponse(id,periodo).then(calif => res.status(200).send(calif)))
