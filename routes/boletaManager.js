@@ -12,7 +12,6 @@ route.get("/getBoleta",(req,res) => {
         .then(periodo => buildResponse(id,periodo).then(calif => res.status(200).send(calif)))
         .catch(error => res.sendStatus(400))
 
-
     }
 )
 
